@@ -1,0 +1,31 @@
+Manager:
+	FirstWindow:
+	SecondWindow:
+
+<FirstWindow>:
+	name: "Main"
+
+	GridLayout:
+		cols: 1
+		GridLayout:
+			cols: 2
+			Label:
+				text: "Password"
+			TextInput:
+				id: passwd
+				multiline: False
+
+		Button:
+			text: "Submit!"
+			on_release:
+				app.root.current = "Second" if passwd.text == "Yassine" else "Main"
+				root.manager.transition.direction = "left"
+				passwd.text = ""
+
+<SecondWindow>:
+	name: "Second"
+	Button:
+		text: "Go Back!"
+		on_release:
+			app.root.current = "Main"
+			root.manager.transition.direction = "right"
